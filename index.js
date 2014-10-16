@@ -1,9 +1,10 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var port = process.env.PORT || 4568;
 
 app.get('/', function(req, res){
-  res.sendFile('/Users/Kelly/Desktop/socket-project/index.html');
+  res.sendFile('./index.html');
 });
 
 io.on('connection', function(socket){
@@ -20,6 +21,6 @@ io.on('connection', function(socket){
 
 });
 
-http.listen(3000, function(){
-  console.log('listening on *:3000');
+http.listen(port, function(){
+  console.log('listening on *:', port);
 });
